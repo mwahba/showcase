@@ -1,0 +1,9 @@
+name: nodejs_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.13.2
+  - nodejs
+  - mongodb
+  - openssl

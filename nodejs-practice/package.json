@@ -1,0 +1,50 @@
+{
+  "name": "nodejs-messaging",
+  "version": "1.0.0",
+  "description": "Messaging app in NodeJS",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx mocha --timeout 5000 'test/**/*.test.js'",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules npx mocha -w --timeout 5000 'test/**/*.test.js'",
+    "test:coverage": "nyc npm test"
+  },
+  "keywords": [
+    "messaging",
+    "app",
+    "nodeJS",
+    "Express",
+    "Redis",
+    "JSON",
+    "MongoDB"
+  ],
+  "author": "markwahba@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.12.1",
+    "multer": "^1.4.5-lts.1",
+    "redis": "^4.7.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.2.0",
+    "@types/express": "^5.0.0",
+    "@types/mocha": "^10.0.10",
+    "@types/mongoose": "^5.11.96",
+    "@types/supertest": "^6.0.2",
+    "chai": "^5.2.0",
+    "mocha": "^11.1.0",
+    "mongodb-memory-server": "^10.1.4",
+    "nyc": "^17.1.0",
+    "socket.io-client": "^4.8.1",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}

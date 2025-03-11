@@ -1,0 +1,8 @@
+{
+    "node-option": [
+        "experimental-vm-modules",
+        "no-warnings"
+    ],
+    "timeout": 5000,
+    "require": "dotenv/config"
+}
