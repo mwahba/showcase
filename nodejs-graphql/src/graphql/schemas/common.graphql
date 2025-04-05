@@ -1,0 +1,20 @@
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  ALL
+}
+
+enum DeviceType {
+  MOBILE
+  DESKTOP
+  TABLET
+  ALL
+}
+
+enum AdStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  COMPLETED
+}

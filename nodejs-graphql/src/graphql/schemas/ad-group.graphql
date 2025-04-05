@@ -1,0 +1,46 @@
+scalar DateTime
+
+type AdGroup {
+  id: ID!
+  name: String!
+  description: String
+  campaign: Campaign!
+  keywords: [String!]
+  locations: [String!]
+  gender: Gender!
+  deviceType: DeviceType!
+  minAge: Int
+  maxAge: Int
+  status: AdStatus!
+  ads: [Ad!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateAdGroupInput {
+  campaignId: ID!
+  name: String!
+  description: String
+  keywords: [String!]
+  locations: [String!]
+  gender: Gender
+  deviceType: DeviceType
+  minAge: Int
+  maxAge: Int
+}
+
+extend type Query {
+  getAdGroup(id: ID!): AdGroup
+  listAdGroupsByCampaign(campaignId: ID!): [AdGroup!]!
+}
+
+extend type Mutation {
+  createAdGroup(input: CreateAdGroupInput!): AdGroup!
+  updateAdGroup(
+    id: ID!
+    name: String
+    description: String
+    status: AdStatus
+  ): AdGroup!
+  deleteAdGroup(id: ID!): Boolean!
+}

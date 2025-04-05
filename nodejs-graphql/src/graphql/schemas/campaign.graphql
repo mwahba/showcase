@@ -1,0 +1,41 @@
+scalar DateTime
+
+type Campaign {
+  id: ID!
+  name: String!
+  description: String
+  app: App!
+  startDate: String!
+  endDate: DateTime
+  budget: Float!
+  status: AdStatus!
+  adGroups: [AdGroup!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateCampaignInput {
+  appId: ID!
+  name: String!
+  description: String
+  startDate: DateTime!
+  endDate: DateTime
+  budget: Float!
+}
+
+extend type Query {
+  getCampaign(id: ID!): Campaign
+  listCampaignsByApp(appId: ID!): [Campaign!]!
+}
+
+extend type Mutation {
+  createCampaign(input: CreateCampaignInput!): Campaign!
+  updateCampaign(
+    id: ID!
+    name: String
+    description: String
+    budget: Float
+    status: AdStatus
+  ): Campaign!
+  deleteCampaign(id: ID!): Boolean!
+}

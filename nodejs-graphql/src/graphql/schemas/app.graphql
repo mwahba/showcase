@@ -1,0 +1,27 @@
+scalar DateTime
+
+type App {
+  id: ID!
+  name: String!
+  description: String
+  apiKey: String!
+  campaigns: [Campaign!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateAppInput {
+  name: String!
+  description: String
+}
+
+extend type Query {
+  getApp(id: ID!): App
+  listApps: [App!]!
+}
+
+extend type Mutation {
+  createApp(input: CreateAppInput!): App!
+  updateApp(id: ID!, name: String, description: String): App!
+  deleteApp(id: ID!): Boolean!
+}

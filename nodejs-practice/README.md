@@ -7,7 +7,6 @@
     11. `conda env update --file=environment.yml --prune` to take in the changes and uninstall removed dependencies.
 1. To run commands with sudo in a conda environment:
     11. `conda activate nodejs_env`
-1. 
 
 ## Messaging App
 1. Create a `.env` file with the following content, replacing with the appropriate configurations:

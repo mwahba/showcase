@@ -1,0 +1,57 @@
+scalar DateTime
+
+type Ad {
+  id: ID!
+  title: String!
+  description: String!
+  adGroup: AdGroup!
+  imageUrl: String
+  destinationUrl: String!
+  impressions: Int!
+  clicks: Int!
+  status: AdStatus!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type AdPerformance {
+  id: ID!
+  adId: String!
+  date: DateTime!
+  impressions: Int!
+  clicks: Int!
+  spend: Float!
+}
+
+input CreateAdInput {
+  adGroupId: ID!
+  title: String!
+  description: String!
+  imageUrl: String
+  destinationUrl: String!
+}
+
+input UpdateAdInput {
+  id: ID!
+  title: String
+  description: String
+  imageUrl: String
+  destinationUrl: String
+  status: AdStatus
+}
+
+extend type Query {
+  getAd(id: ID!): Ad
+  listAdsByAdGroup(adGroupId: ID!): [Ad!]!
+  getAdPerformance(
+    adId: ID!
+    startDate: DateTime
+    endDate: DateTime
+  ): [AdPerformance!]!
+}
+
+extend type Mutation {
+  createAd(input: CreateAdInput!): Ad!
+  updateAd(input: UpdateAdInput!): Ad!
+  deleteAd(id: ID!): Boolean!
+}

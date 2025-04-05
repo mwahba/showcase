@@ -1,0 +1,112 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Enum for different targeting options
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  ALL
+}
+
+enum DeviceType {
+  MOBILE
+  DESKTOP
+  TABLET
+  ALL
+}
+
+enum AdStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  COMPLETED
+}
+
+// App represents a mobile or web application
+model App {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  apiKey      String      @unique
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  campaigns   Campaign[]
+}
+
+// Campaign represents a marketing initiative
+model Campaign {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  app         App         @relation(fields: [appId], references: [id])
+  appId       String
+  startDate   DateTime
+  endDate     DateTime?
+  budget      Float
+  status      AdStatus    @default(DRAFT)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  adGroups    AdGroup[]
+}
+
+// AdGroup allows precise targeting of ads
+model AdGroup {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  campaign    Campaign    @relation(fields: [campaignId], references: [id])
+  campaignId  String
+  
+  // Targeting options
+  keywords    String[]
+  locations   String[]
+  gender      Gender      @default(ALL)
+  deviceType  DeviceType  @default(ALL)
+  minAge      Int?
+  maxAge      Int?
+  
+  status      AdStatus    @default(DRAFT)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  ads         Ad[]
+}
+
+// Ad represents an individual advertisement
+model Ad {
+  id          String      @id @default(cuid())
+  title       String
+  description String
+  adGroup     AdGroup     @relation(fields: [adGroupId], references: [id])
+  adGroupId   String
+  
+  // Ad content and tracking
+  imageUrl    String?
+  destinationUrl String
+  
+  // Performance metrics
+  impressions Int         @default(0)
+  clicks      Int         @default(0)
+  
+  status      AdStatus    @default(DRAFT)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+// Tracking model for detailed ad performance
+model AdPerformance {
+  id          String      @id @default(cuid())
+  adId        String
+  date        DateTime
+  impressions Int
+  clicks      Int
+  spend       Float
+  
+  @@unique([adId, date])
+}
