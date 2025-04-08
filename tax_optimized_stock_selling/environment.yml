@@ -1,0 +1,14 @@
+name: tax_optimized_stock_selling_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.13
+  - pip
+  - scapy
+  - nodejs
+  - inetutils
+  - iperf
+  - requests
+  - dnspython
+  - yfinance

@@ -1,0 +1,21 @@
+Tax-Optimized Stock Sales
+========================
+
+Date: April 08, 2025
+
+Target Amount: $25000.00
+Total Proceeds: $25000.00
+Total Tax: $-7.88
+Net Proceeds: $25007.88
+
+Index  Symbol   Quantity   Cost Basis   Current    Proceeds     Tax          Term      
+                to Sell    per Share    Price                                          
+--------------------------------------------------------------------------------
+7      AMZN     13.83      $166.59      $181.05    $2503.66     $29.99      Long-term 
+2      AMZN     124.25     $182.32      $181.05    $22496.34    -$37.88     Short-term
+--------------------------------------------------------------------------------
+
+Tax Optimization Strategy:
+1. First, harvest tax losses (sell lots with unrealized losses)
+2. Then, sell long-term gain lots (lower tax rate)
+3. Finally, if needed, sell short-term gain lots (higher tax rate)
